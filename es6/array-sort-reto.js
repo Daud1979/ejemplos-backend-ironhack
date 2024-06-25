@@ -23,18 +23,19 @@ const titleOrder = [
     "Príncipe",
     "Rey",
 ];
-
+//rey,principe,duque,marques,conde, vizconde,baron
 // Creamos la función de comparación para ordenar los títulos de menor a mayor. Es decir en primera posición debería aparecer el Rey, luego los principes, luego los Duques, y así hasta que en las útlimas posoiciones del array aparezcan los barones.
 
 // https://hips.hearstapps.com/hmg-prod/images/los-bridgerton-netflix-1611144480.jpg
 
 // Nobleza en europa: https://wiki.medieval-europe.eu/index.php?title=Noble_Titles
+const ordenartitulo=titleOrder.reverse();
 
 
-
-function compareTitles(a, b) {
-    //...
-}
+ function compareTitles(a, b) {
+     //...
+     return ordenartitulo.indexOf(a.title) - ordenartitulo.indexOf(b.title);
+ }
 
 // Ordenamos los nobles usando la función de comparación
 nobles.sort(compareTitles);
