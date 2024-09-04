@@ -1,8 +1,12 @@
 const mongoose = require('mongoose');
 
-main().catch(err => console.log(err));
+main().catch(err => {
+    console.error('SI CAPTURAMOS EL ERROR.');
+    console.error(err.message);
+});
 
 async function main() {
+
     await mongoose.connect('mongodb+srv://oscar:oscar@cluster0.c8tq0vp.mongodb.net/ironhackDB');
 
     // 1. Crear el Schema
@@ -48,21 +52,24 @@ async function main() {
 
     // Ya disponemos de la clase 'User' para poder crear nuevos estudiantes para nuestra base de datos
     const matias = new User({
-        name: "Pepe",
+        name: "pepe",
         lastName: "Muller",
         birthDate: new Date('1990-10-10'),
         contact: {
             phone: "666777888",
-            email: "trolemail"
+            email: "pepe@gmail.com"
         },
         finishedCourses: ["HTML 101"]
     });
-
+    console.log("Instancia de la clase USer matias: ", matias);
     // Guardamos el usuario en la base de datos
-    try {
-        await matias.save();
-    } catch (err) {
-        console.log("Ha ocurrido un error al guardar el documento", err);
-    }
+    const documentCreated = await matias.save();
+
+    // Consultar todos los datos del usuario que se acaba de crear
+
+    console.log("documento bbdd: ", documentCreated);
+    // res.status(201).send(documentCerated);
+
+
     console.log('Usuario guardado correctamente');
 }
